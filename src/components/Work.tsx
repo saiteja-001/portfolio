@@ -11,19 +11,19 @@ const projects = [
     title: "AI-Powered Multi-Disease Prediction System",
     category: "Machine Learning / Streamlit Web App",
     tools: "Python, Scikit-learn, Streamlit, Pandas. 3 classification models (Diabetes, Heart, Kidney disease), 85% accuracy, sub-second latency.",
-    image: "/images/python.png",
+    image: "/images/disease_prediction.png",
   },
   {
     title: "Driver Drowsiness Detection System",
     category: "Computer Vision / Python AI",
     tools: "Python, OpenCV, Computer Vision. Real-time facial landmark detection pipeline, Eye Aspect Ratio (EAR) algorithm, 30 FPS, 1-2s alerts.",
-    image: "/images/opencv.png",
+    image: "/images/drowsiness_detection.png",
   },
   {
     title: "Smart Traffic Light System - Prototype",
     category: "Embedded Systems / IoT",
     tools: "Raspberry Pi, Python, Embedded Systems. Adaptive traffic signal control system, dynamic 4-lane signal timing, simulated 20-25% improvement.",
-    image: "/images/raspberrypi.png",
+    image: "/images/smart_traffic.png",
   },
 ];
 

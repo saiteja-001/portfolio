@@ -115,9 +115,43 @@
   display: flex;
   width: 100%;
   justify-content: center;
+  perspective: 1000px;
 }
 .work-image-in {
   position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.work-image-in::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.18) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  transition: 0.8s ease-in-out;
+  pointer-events: none;
+  z-index: 2;
+}
+.work-image-in:hover {
+  transform: scale(1.05) translateY(-5px) rotateX(2deg);
+  border-color: rgba(194, 164, 255, 0.4);
+  box-shadow: 0 20px 40px rgba(194, 164, 255, 0.15), 
+              0 0 0 1px rgba(194, 164, 255, 0.2);
+}
+.work-image-in:hover::after {
+  left: 125%;
 }
 .work-link {
   position: absolute;
@@ -135,6 +169,7 @@
     inset 0px 0px 10px 0px #393939;
   transition: 0.3s;
   opacity: 0;
+  z-index: 3;
 }
 .work-image a:hover {
   color: inherit;
@@ -150,13 +185,48 @@
   left: 0;
   background-color: #000;
   object-fit: cover;
+  z-index: 1;
 }
 .work-image img {
   max-width: 100%;
   max-height: 350px;
   display: block;
   object-fit: contain;
-  border-radius: 8px;
+  border-radius: 12px;
+  transition: all 0.5s ease;
+  animation: floatCardOdd 6s ease-in-out infinite alternate;
+}
+
+.work-box:nth-child(even) .work-image img {
+  animation: floatCardEven 6s ease-in-out infinite alternate;
+}
+
+.work-image-in:hover img {
+  animation-play-state: paused;
+}
+
+@keyframes floatCardOdd {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+  100% {
+    transform: translateY(4px) rotate(-1deg);
+  }
+}
+
+@keyframes floatCardEven {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(8px) rotate(-1deg);
+  }
+  100% {
+    transform: translateY(-4px) rotate(1deg);
+  }
 }
 @media only screen and (max-height: 900px) {
   .work-image img {
